@@ -1,0 +1,612 @@
+<?php
+require("database.php");
+$sql = "SELECT * FROM `dbo.full_contract`";
+$query = mysqli_query($conn, $sql);
+
+if(isset($_POST['submit']) ){
+  $Full_Contract_Code = $_POST["Full_Contract_Code"];
+  $Customer_Name = $_POST["Customer_Name"];
+  $Year_Of_Birth = $_POST["Year_Of_Birth"];
+  $SSN = $_POST["SSN"];
+  $Customer_Address = $_POST["Customer_Address"];
+  $Mobile = $_POST["Mobile"];
+  $Property_ID = $_POST["Property_ID"];
+  $Date_Of_Contract = $_POST["Date_Of_Contract"];
+  $Price = $_POST["Price"];
+  $Deposit = $_POST["Deposit"];
+  $Remain = $_POST["Remain"];
+  $Status = $_POST["Status"];
+
+  // check cac bien luu tru thong tin dam bao chung da duoc nhao giu lieu
+  if(isset($Customer_Name) && isset($Year_Of_Birth) && isset($SSN)){
+      // viet cau lenh sql
+      $sql = "INSERT INTO `dbo.full_contract`(`Full_Contract_Code`, `Customer_Name`, `Year_Of_Birth`, `SSN`, `Customer_Address`, `Mobile`, `Property_ID`, `Date_Of_Contract`, `Price`, `Deposit`, `Status`) VALUES 
+      ('','$Customer_Name','$Year_Of_Birth','$SSN','$Customer_Address','$Mobile','$Property_ID','$Date_Of_Contract','$Price','$Deposit','$Status')";
+
+      //kiem tra cau lenh co thanh cong khong
+      $result = mysqli_query($conn, $sql);
+      if($result == true){
+          header("Location:contactmanager.php");
+          echo "them hợp đồng thành công".$sql;
+      }else{
+          echo "them san pham that bai".$sql;
+      }
+  }else{
+    echo "Vui lòng điền đủ các trường thông tin".$sql;
+}
+}
+
+?>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FC</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/fc/styles.css" type="text/css" rel="stylesheet"/>
+    <script src="resources/scripts/jquery-3.2.1.min.js"></script>
+    <script src="resources/scripts/axure/axQuery.js"></script>
+    <script src="resources/scripts/axure/globals.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/axure/annotation.js"></script>
+    <script src="resources/scripts/axure/axQuery.std.js"></script>
+    <script src="resources/scripts/axure/doc.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+    <script src="resources/scripts/axure/events.js"></script>
+    <script src="resources/scripts/axure/recording.js"></script>
+    <script src="resources/scripts/axure/action.js"></script>
+    <script src="resources/scripts/axure/expr.js"></script>
+    <script src="resources/scripts/axure/geometry.js"></script>
+    <script src="resources/scripts/axure/flyout.js"></script>
+    <script src="resources/scripts/axure/model.js"></script>
+    <script src="resources/scripts/axure/repeater.js"></script>
+    <script src="resources/scripts/axure/sto.js"></script>
+    <script src="resources/scripts/axure/utils.temp.js"></script>
+    <script src="resources/scripts/axure/variables.js"></script>
+    <script src="resources/scripts/axure/drag.js"></script>
+    <script src="resources/scripts/axure/move.js"></script>
+    <script src="resources/scripts/axure/visibility.js"></script>
+    <script src="resources/scripts/axure/style.js"></script>
+    <script src="resources/scripts/axure/adaptive.js"></script>
+    <script src="resources/scripts/axure/tree.js"></script>
+    <script src="resources/scripts/axure/init.temp.js"></script>
+    <script src="resources/scripts/axure/legacy.js"></script>
+    <script src="resources/scripts/axure/viewer.js"></script>
+    <script src="resources/scripts/axure/math.js"></script>
+    <script src="resources/scripts/axure/jquery.nicescroll.min.js"></script>
+    <script src="data/document.js"></script>
+    <script src="files/fc/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body>
+    <div id="base" class="">
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u582" class="ax_default box_1">
+        <div id="u582_div" class=""></div>
+        <div id="u582_text" class="text " style="display:none; visibility: hidden">
+          <p></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u583" class="ax_default box_1">
+        <div id="u583_div" class=""></div>
+        <div id="u583_text" class="text " style="display:none; visibility: hidden">
+          <p></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u584" class="ax_default" data-left="144" data-top="106" data-width="226" data-height="18">
+
+        <!-- Unnamed (Shape) -->
+        <div id="u585" class="ax_default heading_3">
+          <img id="u585_img" class="img " src="images/add_property/u335.svg"/>
+          <div id="u585_text" class="text ">
+            <p><span>Trang chủ &gt;</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Shape) -->
+        <div id="u586" class="ax_default heading_3">
+          <img id="u586_img" class="img " src="images/add_property/u335.svg"/>
+          <div id="u586_text" class="text ">
+            <p><span>Danh sách</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u587" class="ax_default" data-left="0" data-top="0" data-width="0" data-height="0">
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u588" class="ax_default box_1 disabled">
+        <div id="u588_div" class="disabled"></div>
+        <div id="u588_text" class="text " style="display:none; visibility: hidden">
+          <p></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Image) -->
+      <div id="u589" class="ax_default image">
+        <img id="u589_img" class="img " src="images/view_list_of_property/u16.png"/>
+        <div id="u589_text" class="text " style="display:none; visibility: hidden">
+          <p></p>
+        </div>
+      </div>
+
+      <!-- Navigation Bar (Group) -->
+      <div id="u590" class="ax_default" data-label="Navigation Bar" data-left="287" data-top="43" data-width="114" data-height="22">
+
+        <!-- Dropdown Menu Item (Group) -->
+        <div id="u591" class="ax_default" data-label="Dropdown Menu Item" data-left="287" data-top="43" data-width="114" data-height="22">
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u592" class="ax_default heading_3">
+            <div id="u592_div" class=""></div>
+            <div id="u592_text" class="text ">
+              <p><span>Nhà đất bán</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u593" class="ax_default heading_3">
+        <div id="u593_div" class=""></div>
+        <div id="u593_text" class="text ">
+          <p><span>Tin tức</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u594" class="ax_default heading_3">
+        <div id="u594_div" class=""></div>
+        <div id="u594_text" class="text ">
+          <p><span>Dự án</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u595" class="ax_default heading_3">
+        <div id="u595_div" class=""></div>
+        <div id="u595_text" class="text ">
+          <p><span>Hỗ trợ</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u596" class="ax_default heading_3">
+        <div id="u596_div" class=""></div>
+        <div id="u596_text" class="text ">
+          <p><span>Danh bạ</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u597" class="ax_default heading_3">
+        <div id="u597_div" class=""></div>
+        <div id="u597_text" class="text ">
+          <p><span>Tìm kiếm</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u598" class="ax_default heading_3">
+        <div id="u598_div" class=""></div>
+        <div id="u598_text" class="text ">
+          <p><span>Đăng ký</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u599" class="ax_default heading_3">
+        <div id="u599_div" class=""></div>
+        <div id="u599_text" class="text ">
+          <p><span>Đăng nhập</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Vertical Line) -->
+      <div id="u600" class="ax_default line">
+        <img id="u600_img" class="img " src="images/view_list_of_property/u27.svg"/>
+        <div id="u600_text" class="text " style="display:none; visibility: hidden">
+          <p></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u601" class="ax_default heading_3">
+        <div id="u601_div" class=""></div>
+        <div id="u601_text" class="text ">
+          <p><span>Đăng tin</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u602" class="ax_default" data-left="1325" data-top="43" data-width="135" data-height="22">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u603" class="ax_default heading_3">
+          <div id="u603_div" class=""></div>
+          <div id="u603_text" class="text ">
+            <p><span>Danh sách </span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Shape) -->
+        <div id="u604" class="ax_default icon">
+          <img id="u604_img" class="img " src="images/view_list_of_property/u31.svg"/>
+          <div id="u604_text" class="text " style="display:none; visibility: hidden">
+            <p></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u605" class="ax_default" data-left="0" data-top="1005" data-width="1880" data-height="170">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u606" class="ax_default box_1">
+          <div id="u606_div" class=""></div>
+          <div id="u606_text" class="text " style="display:none; visibility: hidden">
+            <p></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u607" class="ax_default image">
+          <img id="u607_img" class="img " src="images/view_list_of_property/u16.png"/>
+          <div id="u607_text" class="text " style="display:none; visibility: hidden">
+            <p></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u608" class="ax_default label">
+          <div id="u608_div" class=""></div>
+          <div id="u608_text" class="text ">
+            <p><span>PROPERTY</span></p><p><span>&nbsp;&nbsp; &nbsp; PPC</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Shape) -->
+        <div id="u609" class="ax_default icon">
+          <img id="u609_img" class="img " src="images/view_list_of_property/u72.svg"/>
+          <div id="u609_text" class="text " style="display:none; visibility: hidden">
+            <p></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Shape) -->
+        <div id="u610" class="ax_default icon">
+          <img id="u610_img" class="img " src="images/view_list_of_property/u73.svg"/>
+          <div id="u610_text" class="text " style="display:none; visibility: hidden">
+            <p></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Shape) -->
+        <div id="u611" class="ax_default icon">
+          <img id="u611_img" class="img " src="images/view_list_of_property/u74.svg"/>
+          <div id="u611_text" class="text " style="display:none; visibility: hidden">
+            <p></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u612" class="ax_default label">
+          <div id="u612_div" class=""></div>
+          <div id="u612_text" class="text ">
+            <p><span>Hỗ trợ khách hàng</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u613" class="ax_default label">
+          <div id="u613_div" class=""></div>
+          <div id="u613_text" class="text ">
+            <p><span>Tư vấn khách hàng</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u614" class="ax_default label">
+          <div id="u614_div" class=""></div>
+          <div id="u614_text" class="text ">
+            <p><span>Hotline</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u615" class="ax_default label">
+          <div id="u615_div" class=""></div>
+          <div id="u615_text" class="text ">
+            <p><span>quocduy@gmail.com</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u616" class="ax_default label">
+          <div id="u616_div" class=""></div>
+          <div id="u616_text" class="text ">
+            <p><span>quocduy@gmail.com</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u617" class="ax_default label">
+          <div id="u617_div" class=""></div>
+          <div id="u617_text" class="text ">
+            <p><span>0929052594</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u618" class="ax_default heading_2">
+        <div id="u618_div" class=""></div>
+        <div id="u618_text" class="text ">
+          <p><span>Quản lý hợp đồng</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u619" class="ax_default button">
+        <div id="u619_div" class=""></div>
+        <div id="u619_text" class="text ">
+          <p><span>Thêm hợp đồng</span></p>
+        </div>
+      </div>
+
+      <!-- Add (Group) -->
+      <div id="u620" class="ax_default ax_default_hidden" data-label="Add" style="display:none; visibility: hidden" data-left="493" data-top="241" data-width="900" data-height="694">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u621" class="ax_default box_2">
+          <div id="u621_div" class=""></div>
+          <div id="u621_text" class="text " style="display:none; visibility: hidden">
+            <p></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u622" class="ax_default label">
+          <div id="u622_div" class=""></div>
+          <div id="u622_text" class="text ">
+            <p><span>Thêm bất động sản</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u623" class="ax_default label">
+          <div id="u623_div" class=""></div>
+          <div id="u623_text" class="text ">
+            <p><span>Mã hợp đồng</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Text Field) -->
+        <div id="u624" class="ax_default text_field">
+          <div id="u624_div" class=""></div>
+          <input id="u624_input" type="text" value="" class="u624_input"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u625" class="ax_default label">
+          <div id="u625_div" class=""></div>
+          <div id="u625_text" class="text ">
+            <p><span>Tên khách hàng</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Text Field) -->
+        <div id="u626" class="ax_default text_field">
+          <div id="u626_div" class=""></div>
+          <input id="u626_input" type="text" value="" class="u626_input"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u627" class="ax_default label">
+          <div id="u627_div" class=""></div>
+          <div id="u627_text" class="text ">
+            <p><span>Sinh năm</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Text Field) -->
+        <div id="u628" class="ax_default text_field">
+          <div id="u628_div" class=""></div>
+          <input id="u628_input" type="text" value="" class="u628_input"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u629" class="ax_default label">
+          <div id="u629_div" class=""></div>
+          <div id="u629_text" class="text ">
+            <p><span>CCCD</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Text Field) -->
+        <div id="u630" class="ax_default text_field">
+          <div id="u630_div" class=""></div>
+          <input id="u630_input" type="text" value="" class="u630_input"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u631" class="ax_default label">
+          <div id="u631_div" class=""></div>
+          <div id="u631_text" class="text ">
+            <p><span>Địa chỉ</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Text Field) -->
+        <div id="u632" class="ax_default text_field">
+          <div id="u632_div" class=""></div>
+          <input id="u632_input" type="text" value="" class="u632_input"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u633" class="ax_default label">
+          <div id="u633_div" class=""></div>
+          <div id="u633_text" class="text ">
+            <p><span>Số Điện thoại</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Text Field) -->
+        <div id="u634" class="ax_default text_field">
+          <div id="u634_div" class=""></div>
+          <input id="u634_input" type="text" value="" class="u634_input"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u635" class="ax_default label">
+          <div id="u635_div" class=""></div>
+          <div id="u635_text" class="text ">
+            <p><span>Mã bất động sản</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Text Field) -->
+        <div id="u636" class="ax_default text_field">
+          <div id="u636_div" class=""></div>
+          <input id="u636_input" type="text" value="" class="u636_input"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u637" class="ax_default label">
+          <div id="u637_div" class=""></div>
+          <div id="u637_text" class="text ">
+            <p><span>Ngày lập</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Text Field) -->
+        <div id="u638" class="ax_default text_field">
+          <div id="u638_div" class=""></div>
+          <input id="u638_input" type="text" value="" class="u638_input"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u639" class="ax_default label">
+          <div id="u639_div" class=""></div>
+          <div id="u639_text" class="text ">
+            <p><span>Số tiền hợp đồng</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Text Field) -->
+        <div id="u640" class="ax_default text_field">
+          <div id="u640_div" class=""></div>
+          <input id="u640_input" type="text" value="" class="u640_input"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u641" class="ax_default label">
+          <div id="u641_div" class=""></div>
+          <div id="u641_text" class="text ">
+            <p><span>Số tiền đã cọc</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Text Field) -->
+        <div id="u642" class="ax_default text_field">
+          <div id="u642_div" class=""></div>
+          <input id="u642_input" type="text" value="" class="u642_input"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u643" class="ax_default label">
+          <div id="u643_div" class=""></div>
+          <div id="u643_text" class="text ">
+            <p><span>Số tiền còn lại</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Text Field) -->
+        <div id="u644" class="ax_default text_field">
+          <div id="u644_div" class=""></div>
+          <input id="u644_input" type="text" value="" class="u644_input"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u645" class="ax_default label">
+          <div id="u645_div" class=""></div>
+          <div id="u645_text" class="text ">
+            <p><span>Trạng thái</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Text Field) -->
+        <div id="u646" class="ax_default text_field">
+          <div id="u646_div" class=""></div>
+          <input id="u646_input" type="text" value="" class="u646_input"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u647" class="ax_default button">
+          <div id="u647_div" class=""></div>
+          <div id="u647_text" class="text ">
+            <p><span>Lưu</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u648" class="ax_default button">
+          <div id="u648_div" class=""></div>
+          <div id="u648_text" class="text ">
+            <p><span>Hủy</span></p>
+          </div>
+        </div>
+
+        <table class="productList">
+          <tr>
+              <th>ID</th>
+              <th>Mã Hợp đồng</th>
+              <th>Tên Khách hàng</th>
+              <th>Năm sinh</th>
+              <th>CMND</th>
+              <th>Địa chỉ</th>
+              <th>Số điện thoại</th>
+              <th>Mã bất động sản</th>
+              <th>Ngày lập hợp đồng</th>
+              <th>Giá trị hợp đồng</th>
+              <th>Số tiền đã cọc</th>
+              <th>Số tiền còn lại</th>
+              <th>Trạng thái</th>
+          </tr>
+          <?php
+              while($row = mysqli_fetch_array($query)){
+          ?>
+          <tr>
+              <td><?= $row["ID"] ?></td>
+              <td><?= $row["Full_Contract_Code"] ?></td>
+              <td><?= $row["Customer_Name"] ?></td>
+              <td><?= $row["Year_Of_Birth"] ?></td>
+              <td><?= $row["SSN"] ?></td>
+              <td><?= $row["Customer_Address"] ?></td>
+              <td><?= $row["Mobile"] ?></td>
+              <td><?= $row["Property_ID"] ?></td>
+              <td><?= $row["Date_Of_Contract"] ?></td>
+              <td><?= $row["Price"] ?></td>
+              <td><?= $row["Deposit"] ?></td>
+              <td><?= $row["Remain"] ?></td>
+              <td><?= $row["Status"] ?></td>
+          </tr>
+          <?php }?>
+      </div>
+    </div>
+    <script src="resources/scripts/axure/ios.js"></script>
+  </body>
+</html>
